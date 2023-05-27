@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <div>Header</div>
+      <nav className='nav'>
+            <a href='/' className='nav-link'>People App</a>
+    </nav>
   )
 }
 
