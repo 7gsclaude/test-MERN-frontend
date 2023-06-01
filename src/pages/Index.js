@@ -3,26 +3,28 @@ import { Link } from "react-router-dom";
 
 function Index(props) {
   // state to hold formData
-  const [newForm, setNewForm] = useState({
-    name: "",
+  const formFields = {
+    item: "",
     image: "",
-    title: "",
-  });
+    description: "",
+    price: "",
+  };
+
+  const [ newForm, setNewForm ] = useState(formFields);
 
   // handleChange function for form
   const handleChange = (event) => {
-    setNewForm({ ...newForm, [event.target.name]: event.target.value });
+    setNewForm({ 
+      ...newForm,
+      [event.target.name]: event.target.value 
+    });
   };
 
   // handle submit function for form
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     props.createPeople(newForm);
-    setNewForm({
-      name: "",
-      image: "",
-      title: "",
-    });
+    setNewForm(formFields);
   };
 
   // loaded function
@@ -39,7 +41,7 @@ function Index(props) {
   };
 
   const loading = () => {
-    return <h1>Loading...</h1>;
+    return <h1>Finding the Peeps...</h1>;
   };
 
   return (
