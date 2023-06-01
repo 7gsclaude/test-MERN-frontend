@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 function Index(props) {
   // state to hold formData
   const formFields = {
-    item: "",
+    name: "",
     image: "",
-    description: "",
-    price: "",
+    title: "",
   };
 
   const [ newForm, setNewForm ] = useState(formFields);
@@ -29,7 +28,8 @@ function Index(props) {
 
   // loaded function
   const loaded = () => {
-    return props.people.map((person) => (
+      return props.people.map((person) => (
+        //key is used to make a stable identity for each component
       <div key={person._id} className="person">
         <Link to={`/people/${person._id}`}>
           <h1>{person.name}</h1>
@@ -41,17 +41,18 @@ function Index(props) {
   };
 
   const loading = () => {
-    return <h1>Finding the Peeps...</h1>;
+    return <h1>Finding the Peeps (loading)...</h1>;
   };
 
   return (
     <section>
-      <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
+              {/* be sure that these are all matching a schema type of function somewhere in future code.  */}
         <input
           type="text"
           value={newForm.name}
           name="name"
-          placeholder="name"
+          
           onChange={handleChange}
         />
         <input
@@ -63,12 +64,14 @@ function Index(props) {
         />
         <input
           type="text"
-          value={newForm.title}
+          value={newForm.description}
           name="title"
           placeholder="title"
           onChange={handleChange}
-        />
+              />
+              {/* //this is the submit button */}
         <input type="submit" value="Create Person" />
+            
       </form>
       {props.people ? loaded() : loading()}
     </section>
