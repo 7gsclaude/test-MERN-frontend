@@ -4,6 +4,7 @@ import Index from '../pages/Index'
 import Show from '../pages/Show'
 import { API_URLS } from '../urls'
 
+console.log(API_URLS);
 
 const Main = () => {
 
@@ -16,17 +17,17 @@ const Main = () => {
         setPeople(data);
     }
 
-  const createPeople = async (people) => {
-    await fetch(API_URLS.people, {
-      // Use API_URLS.MAIN_URL for the POST request
-      method: "POST",
-      headers: {
-        "Content-type": "application/json", // Use lowercase "application/json"
-      },
-      body: JSON.stringify(people),
-    });
-    getPeople();
-  };
+ const createPeople = async (people) => {
+   await fetch(API_URLS.MAIN_URL, {
+     method: "POST",
+     headers: {
+       "Content-type": "application/json",
+     },
+     body: JSON.stringify(people),
+   });
+   getPeople();
+ };
+
 
     const updatePeople = async (people, id) => { 
         await fetch(API_URLS + id, {
@@ -54,7 +55,7 @@ const Main = () => {
         <main>
             <Routes>
                 <Route exact path="/" element={<Index people={people} createPeople={createPeople} />} />
-                <Route path="/person/:id" element={<Show people={people} updatePeople={updatePeople} deletePeople={deletePeople}/>} />
+                <Route path="/people/:id" element={<Show people={people} updatePeople={updatePeople} deletePeople={deletePeople}/>} />
             </Routes>
         </main>
     )
