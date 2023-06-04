@@ -7,13 +7,13 @@ function Index(props) {
     name: "",
     image: "",
       title: "",
-      
+
   };
 
   
     
   const [ newForm, setNewForm ] = useState(formFields);
-    console.log(newForm);
+
     
   // handleChange function for form
   const handleChange = (event) => {

@@ -4,7 +4,7 @@ import Index from '../pages/Index'
 import Show from '../pages/Show'
 import { API_URLS } from '../urls'
 
-console.log(API_URLS);
+
 
 const Main = () => {
 
@@ -30,10 +30,10 @@ const Main = () => {
 
 
     const updatePeople = async (people, id) => { 
-        await fetch(API_URLS + id, {
+        await fetch(API_URLS.people + id, {
             method: "PUT",
             headers: {
-                "Content-type": "Application/json",
+                "Content-type": "Application/json", 
             },
             body: JSON.stringify(people),
         })
@@ -41,7 +41,7 @@ const Main = () => {
     }
 
     const deletePeople = async (id) => { 
-        await fetch(API_URLS + id, {
+        await fetch(API_URLS.people + id, {
             method: "DELETE",
         })
         getPeople()
