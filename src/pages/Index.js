@@ -17,6 +17,11 @@ function Index(props) {
     
   // handleChange function for form
   const handleChange = (event) => {
+
+    //when the set state function is called 
+    //new state is passed as argument
+    //the new state is then replacing the old state 
+      
     setNewForm({ 
       ...newForm,
       [event.target.name]: event.target.value 
